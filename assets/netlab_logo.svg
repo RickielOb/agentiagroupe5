@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
+  <rect width="40" height="40" rx="8" fill="#2563EB"/>
+  <!-- Geometric Network Monogram N -->
+  <path d="M12 28V12L28 28V12" stroke="#FFFFFF" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="12" cy="12" r="2.5" fill="#FFFFFF"/>
+  <circle cx="28" cy="28" r="2.5" fill="#FFFFFF"/>
+  <circle cx="20" cy="20" r="2" fill="#93C5FD"/>
+</svg>

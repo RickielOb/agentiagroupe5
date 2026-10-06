@@ -1,0 +1,508 @@
+/* ==========================================================================
+   NETLAB DESIGN SYSTEM — FEUILLE DE STYLE PROFESSIONNELLE & ÉDITORIALE
+   Typographie : Source Serif 4 + IBM Plex Sans + IBM Plex Mono
+   Palette : Neutres froids (#F7F8FA / #0B0F19) + Accent Bleu (#2563EB)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;1,8..60,600&display=swap');
+
+/* --- Reset & Base Globale --- */
+html, body, [class*="css"], .stApp {
+    font-family: var(--font-sans) !important;
+    background-color: var(--bg-app) !important;
+    color: var(--text-primary) !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Échelle Typographique Définie --- */
+h1, .editorial-h1 {
+    font-family: var(--font-serif) !important;
+    font-size: 30px !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.01em !important;
+    line-height: 1.25 !important;
+    color: var(--text-primary) !important;
+}
+
+h2, .editorial-h2 {
+    font-family: var(--font-serif) !important;
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.01em !important;
+    line-height: 1.3 !important;
+    color: var(--text-primary) !important;
+}
+
+h3, .editorial-h3 {
+    font-family: var(--font-sans) !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    color: var(--text-primary) !important;
+}
+
+/* Corps de texte standard (16px) */
+p, div, span, label, li {
+    font-family: var(--font-sans);
+    font-size: 15px;
+}
+
+/* Éléments techniques en monospace */
+code, pre, kbd, samp, .tech-mono, div[data-testid="stChatMessage"] code {
+    font-family: var(--font-mono) !important;
+    font-size: 13.5px !important;
+}
+
+/* Header Streamlit : transparent tout en conservant le bouton d'ouverture du sidebar */
+header[data-testid="stHeader"] {
+    background: transparent !important;
+    pointer-events: none !important;
+    z-index: 9999 !important;
+}
+
+header[data-testid="stHeader"] button,
+div[data-testid="collapsedControl"],
+div[data-testid="stSidebarCollapseButton"],
+button[data-testid="baseButton-header"],
+button[data-testid="stSidebarCollapseButton"],
+button[kind="header"] {
+    pointer-events: auto !important;
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+div[data-testid="collapsedControl"] button,
+button[data-testid="stSidebarCollapseButton"],
+header[data-testid="stHeader"] button {
+    background-color: var(--bg-surface) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 8px !important;
+    color: #2563EB !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+    padding: 0.35rem 0.5rem !important;
+    margin: 0.5rem !important;
+    cursor: pointer !important;
+    transition: all 150ms ease !important;
+}
+
+div[data-testid="collapsedControl"] svg,
+button[data-testid="stSidebarCollapseButton"] svg,
+header[data-testid="stHeader"] button svg {
+    color: #2563EB !important;
+    stroke: #2563EB !important;
+    fill: none !important;
+}
+
+/* Masquer les éléments techniques superflus */
+.stDeployButton,
+div[data-testid="stToolbarActionButton"],
+#MainMenu,
+footer,
+div[data-testid="stDecoration"] {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+.main .block-container {
+    padding-top: 2rem !important;
+    padding-bottom: 7.5rem !important;
+    max-width: 860px !important;
+    margin: 0 auto !important;
+}
+
+/* --- Barre Latérale (Sidebar) --- */
+section[data-testid="stSidebar"] {
+    background-color: var(--bg-sidebar) !important;
+    border-right: 1px solid var(--border-color) !important;
+    box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.03) !important;
+}
+
+section[data-testid="stSidebar"] > div:first-child {
+    padding: 1.25rem 1.15rem 2rem 1.15rem !important;
+}
+
+/* Petits labels de formulaires harmonisés (11px, 600, uppercase, letter-spacing 0.06em) */
+.stSelectbox label, 
+.stRadio label, 
+.form-section-label,
+.section-meta-label {
+    font-family: var(--font-sans) !important;
+    font-size: 11.5px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+    color: var(--text-secondary) !important;
+    margin-bottom: 0.35rem !important;
+}
+
+/* --- Selectbox --- */
+div[data-baseweb="select"],
+div[data-baseweb="select"] > div {
+    background-color: var(--bg-surface) !important;
+    border-color: var(--border-input) !important;
+    border-radius: 8px !important;
+    color: var(--text-primary) !important;
+    font-family: var(--font-sans) !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    box-shadow: none !important;
+    transition: border-color 150ms ease !important;
+}
+
+div[data-baseweb="select"]:hover > div {
+    border-color: #2563EB !important;
+}
+
+div[data-baseweb="select"]:focus-within > div {
+    border-color: #2563EB !important;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2) !important;
+}
+
+div[data-baseweb="select"] * {
+    color: var(--text-primary) !important;
+    fill: var(--text-secondary) !important;
+    font-family: var(--font-sans) !important;
+}
+
+div[data-baseweb="popover"],
+ul[role="listbox"] {
+    background-color: var(--bg-surface) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.12) !important;
+}
+
+li[role="option"] {
+    color: var(--text-primary) !important;
+    font-family: var(--font-sans) !important;
+    font-size: 14px !important;
+    padding: 0.5rem 0.85rem !important;
+}
+
+li[role="option"][aria-selected="true"] {
+    background-color: var(--bg-option-selected) !important;
+    color: #2563EB !important;
+    font-weight: 600 !important;
+}
+
+/* --- Contrôle Segmenté Radio (Niveau d'étude) --- */
+div[data-testid="stRadio"] div[role="radiogroup"] {
+    display: flex !important;
+    gap: 0.5rem !important;
+    flex-direction: row !important;
+    width: 100% !important;
+}
+
+div[data-testid="stRadio"] label {
+    flex: 1 1 0% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    font-family: var(--font-sans) !important;
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+    color: var(--text-primary) !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    background: var(--bg-surface) !important;
+    border: 1px solid var(--border-input) !important;
+    padding: 0.5rem 0.5rem !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    transition: all 150ms ease !important;
+}
+
+div[data-testid="stRadio"] label:hover {
+    background: var(--bg-hover) !important;
+    border-color: #2563EB !important;
+}
+
+div[data-testid="stRadio"] label:has(input:checked) {
+    background: var(--bg-option-selected) !important;
+    border-color: #2563EB !important;
+    color: #2563EB !important;
+    font-weight: 600 !important;
+}
+
+div[data-testid="stRadio"] input[type="radio"] {
+    display: none !important;
+}
+
+/* --- Boutons d'Action --- */
+button[kind="primary"] {
+    background: #2563EB !important;
+    color: #FFFFFF !important;
+    border: 1px solid #2563EB !important;
+    border-radius: 8px !important;
+    padding: 0.6rem 1rem !important;
+    font-family: var(--font-sans) !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+    transition: all 150ms ease !important;
+    width: 100% !important;
+}
+
+button[kind="primary"]:hover {
+    background: #1D4ED8 !important;
+    border-color: #1D4ED8 !important;
+}
+
+button[kind="secondary"] {
+    background-color: var(--bg-surface) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-input) !important;
+    border-radius: 8px !important;
+    padding: 0.6rem 0.85rem !important;
+    font-family: var(--font-sans) !important;
+    font-weight: 500 !important;
+    font-size: 13.5px !important;
+    transition: all 150ms ease !important;
+    width: 100% !important;
+    white-space: normal !important;
+    height: auto !important;
+    line-height: 1.45 !important;
+    text-align: left !important;
+}
+
+button[kind="secondary"]:hover {
+    background-color: var(--bg-option-selected) !important;
+    border-color: #2563EB !important;
+    color: #2563EB !important;
+}
+
+/* ==========================================================================
+   BULLES FLOTTANTES ORGANIQUES — SUGGESTIONS DE QUESTIONS
+   Forme pilule (border-radius 999px), flottaison subtile & brillance bleue
+   ========================================================================== */
+
+/* Keyframes de flottaison organique déphasée (mouvement vertical ±8px + horizontal ±3px) */
+@keyframes organicFloat1 {
+    0% {
+        transform: translate3d(0px, 0px, 0);
+    }
+    50% {
+        transform: translate3d(3px, -8px, 0);
+    }
+    100% {
+        transform: translate3d(-2px, -3px, 0);
+    }
+}
+
+@keyframes organicFloat2 {
+    0% {
+        transform: translate3d(0px, 6px, 0);
+    }
+    50% {
+        transform: translate3d(-3px, -6px, 0);
+    }
+    100% {
+        transform: translate3d(2px, 2px, 0);
+    }
+}
+
+@keyframes organicFloat3 {
+    0% {
+        transform: translate3d(0px, -4px, 0);
+    }
+    50% {
+        transform: translate3d(3px, -11px, 0);
+    }
+    100% {
+        transform: translate3d(-2px, -6px, 0);
+    }
+}
+
+/* Keyframes brillance / pulse glow au clic */
+@keyframes pulseBlueGlow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4), 0 0 8px rgba(37, 99, 235, 0.2);
+        transform: scale(0.98);
+    }
+    50% {
+        box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.35), 0 0 26px rgba(37, 99, 235, 0.55);
+        transform: scale(1.01);
+    }
+    100% {
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25), 0 0 24px rgba(37, 99, 235, 0.45);
+        transform: scale(1);
+    }
+}
+
+/* Style de base des bulles pilules */
+div[class*="bubble-cloud-item"] button {
+    background-color: var(--bg-surface) !important;
+    border: 1.5px solid var(--border-input) !important;
+    border-radius: 999px !important;
+    padding: 12px 22px !important;
+    font-family: var(--font-sans) !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    line-height: 1.45 !important;
+    color: var(--text-primary) !important;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06) !important;
+    white-space: normal !important;
+    height: auto !important;
+    min-height: 54px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    cursor: pointer !important;
+    transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 200ms ease,
+                background-color 200ms ease !important;
+}
+
+/* Icône SVG vectorielle Lucide intégrée à gauche du texte */
+div[class*="bubble-cloud-item"] button::before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    flex-shrink: 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%232563EB' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3'/%3E%3Cline x1='12' y1='17' x2='12.01' y2='17'/%3E%3C/svg%3E");
+}
+
+/* Application des rythmes de flottaison distincts */
+.bubble-cloud-item-1 button {
+    animation: organicFloat1 6.2s ease-in-out infinite alternate !important;
+}
+
+.bubble-cloud-item-2 button {
+    animation: organicFloat2 7.1s ease-in-out infinite alternate 1.2s !important;
+}
+
+.bubble-cloud-item-3 button {
+    animation: organicFloat3 6.6s ease-in-out infinite alternate 2.4s !important;
+}
+
+/* État au survol (Hover) : ralentissement / arrêt doux et élévation légère */
+div[class*="bubble-cloud-item"] button:hover {
+    animation-play-state: paused !important;
+    transform: translateY(-4px) scale(1.02) !important;
+    border-color: #2563EB !important;
+    background-color: var(--bg-option-selected) !important;
+    box-shadow: 0 8px 20px -2px rgba(37, 99, 235, 0.18) !important;
+}
+
+/* État au clic & focus (:active, :focus-visible) : Brillance Bleue Lumineuse (Glow) */
+div[class*="bubble-cloud-item"] button:active,
+div[class*="bubble-cloud-item"] button:focus-visible {
+    animation: pulseBlueGlow 500ms ease-out forwards !important;
+    border-color: #2563EB !important;
+    background-color: var(--bg-option-selected) !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3), 0 0 24px rgba(37, 99, 235, 0.5) !important;
+    color: #2563EB !important;
+    outline: none !important;
+}
+
+/* Accessibilité : désactivation des animations si l'utilisateur préfère moins de mouvement */
+@media (prefers-reduced-motion: reduce) {
+    div[class*="bubble-cloud-item"] button {
+        animation: none !important;
+        transform: none !important;
+    }
+}
+
+/* --- Zone de Saisie Chat --- */
+div[data-testid="stBottom"],
+div[data-testid="stBottom"] > div,
+.stChatFloatingInputContainer {
+    background-color: var(--chat-bottom-bg) !important;
+    backdrop-filter: blur(8px) !important;
+    border-top: 1px solid var(--border-color) !important;
+    padding: 1rem 0 !important;
+}
+
+div[data-testid="stChatInput"] {
+    background-color: var(--bg-surface) !important;
+    border: 1px solid var(--border-input) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 10px -2px rgba(0, 0, 0, 0.06) !important;
+    max-width: 860px !important;
+    margin: 0 auto !important;
+}
+
+div[data-testid="stChatInput"]:focus-within {
+    border-color: #2563EB !important;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2) !important;
+}
+
+div[data-testid="stChatInput"] textarea {
+    color: var(--text-primary) !important;
+    background-color: transparent !important;
+    font-family: var(--font-sans) !important;
+    font-size: 14.5px !important;
+    line-height: 1.5 !important;
+}
+
+div[data-testid="stChatInput"] textarea::placeholder {
+    color: var(--text-secondary) !important;
+    font-family: var(--font-sans) !important;
+}
+
+div[data-testid="stChatInput"] button {
+    background-color: #2563EB !important;
+    color: #FFFFFF !important;
+    border-radius: 8px !important;
+    border: none !important;
+    transition: background 150ms ease !important;
+}
+
+div[data-testid="stChatInput"] button:hover {
+    background-color: #1D4ED8 !important;
+}
+
+/* --- Messages de Chat --- */
+div[data-testid="stChatMessage"] {
+    padding: 0.65rem 0 !important;
+}
+
+/* Bulle Assistant */
+div[data-testid="stChatMessage"]:has(div[data-testid="stChatMessageAvatarAssistant"]) > div[data-testid="stChatMessageContent"] {
+    background: var(--bg-surface) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 12px !important;
+    padding: 1.25rem 1.5rem !important;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.03) !important;
+    color: var(--text-primary) !important;
+    font-family: var(--font-sans) !important;
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+}
+
+/* Bulle Utilisateur */
+div[data-testid="stChatMessage"]:has(div[data-testid="stChatMessageAvatarUser"]) > div[data-testid="stChatMessageContent"] {
+    background: var(--user-bubble-bg) !important;
+    border: 1px solid var(--user-bubble-border) !important;
+    border-radius: 12px !important;
+    padding: 0.85rem 1.15rem !important;
+    color: var(--user-bubble-text) !important;
+    font-family: var(--font-sans) !important;
+    font-weight: 500 !important;
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+}
+
+/* Avatars stylisés */
+div[data-testid="stChatMessageAvatarAssistant"] {
+    background-color: var(--bg-option-selected) !important;
+    border: 1px solid var(--border-input) !important;
+    border-radius: 8px !important;
+}
+
+div[data-testid="stChatMessageAvatarUser"] {
+    background-color: var(--bg-surface) !important;
+    color: var(--text-secondary) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 8px !important;
+}

@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240" fill="none">
+  <!-- Background Pattern Grids & Soft Radial Accent -->
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#E2E8F0" stroke-width="0.75" />
+    </pattern>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#1D4ED8" />
+    </linearGradient>
+    <linearGradient id="softBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EFF6FF" />
+      <stop offset="100%" stop-color="#DBEAFE" />
+    </linearGradient>
+    <filter id="shadow" x="-8%" y="-8%" width="120%" height="120%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0F172A" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="240" rx="16" fill="#F8FAFC"/>
+  <rect width="800" height="240" rx="16" fill="url(#grid)" opacity="0.6"/>
+
+  <!-- Network Interconnection Paths -->
+  <g stroke="#94A3B8" stroke-width="1.8" stroke-dasharray="4 4">
+    <path d="M 140 120 L 270 70 L 400 120 L 530 70 L 660 120" />
+    <path d="M 270 70 L 270 170 L 400 120 L 530 170 L 530 70" />
+    <path d="M 140 120 L 270 170" />
+    <path d="M 660 120 L 530 170" />
+  </g>
+
+  <!-- Central Router Node -->
+  <g transform="translate(400, 120)" filter="url(#shadow)">
+    <circle r="36" fill="#FFFFFF" stroke="#2563EB" stroke-width="2.5"/>
+    <circle r="28" fill="url(#blueGrad)"/>
+    <!-- Router Icon Symbol -->
+    <path d="M -10 -4 L 10 -4 M 10 -4 L 4 -10 M 10 -4 L 4 2" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 10 4 L -10 4 M -10 4 L -4 10 M -10 4 L -4 -2" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Left Switch Node -->
+  <g transform="translate(270, 70)" filter="url(#shadow)">
+    <rect x="-24" y="-20" width="48" height="40" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+    <rect x="-18" y="-14" width="36" height="28" rx="6" fill="url(#softBlue)"/>
+    <circle cx="-8" cy="0" r="3" fill="#2563EB"/>
+    <circle cx="0" cy="0" r="3" fill="#2563EB"/>
+    <circle cx="8" cy="0" r="3" fill="#2563EB"/>
+  </g>
+
+  <!-- Left Server Host -->
+  <g transform="translate(140, 120)" filter="url(#shadow)">
+    <rect x="-26" y="-26" width="52" height="52" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+    <rect x="-18" y="-18" width="36" height="10" rx="3" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1"/>
+    <circle cx="10" cy="-13" r="2" fill="#10B981"/>
+    <rect x="-18" y="-4" width="36" height="10" rx="3" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1"/>
+    <circle cx="10" cy="1" r="2" fill="#10B981"/>
+    <rect x="-18" y="10" width="36" height="10" rx="3" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1"/>
+    <circle cx="10" cy="15" r="2" fill="#10B981"/>
+  </g>
+
+  <!-- Left Subnet Client Host -->
+  <g transform="translate(270, 170)" filter="url(#shadow)">
+    <rect x="-22" y="-18" width="44" height="36" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+    <rect x="-14" y="-12" width="28" height="18" rx="3" fill="#F8FAFC" stroke="#64748B" stroke-width="1"/>
+    <line x1="-6" y1="10" x2="6" y2="10" stroke="#64748B" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Right Switch Node -->
+  <g transform="translate(530, 70)" filter="url(#shadow)">
+    <rect x="-24" y="-20" width="48" height="40" rx="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+    <rect x="-18" y="-14" width="36" height="28" rx="6" fill="url(#softBlue)"/>
+    <circle cx="-8" cy="0" r="3" fill="#2563EB"/>
+    <circle cx="0" cy="0" r="3" fill="#2563EB"/>
+    <circle cx="8" cy="0" r="3" fill="#2563EB"/>
+  </g>
+
+  <!-- Right Database / Cloud Node -->
+  <g transform="translate(660, 120)" filter="url(#shadow)">
+    <rect x="-26" y="-26" width="52" height="52" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+    <path d="M -12 -12 C -12 -16, 12 -16, 12 -12 C 12 -8, -12 -8, -12 -12 Z" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+    <path d="M -12 -12 L -12 4 C -12 8, 12 8, 12 4 L 12 -12" fill="none" stroke="#2563EB" stroke-width="1.5"/>
+    <path d="M -12 -4 C -12 0, 12 0, 12 -4" fill="none" stroke="#2563EB" stroke-width="1.5"/>
+    <path d="M -12 4 L -12 12 C -12 16, 12 16, 12 12 L 12 4" fill="none" stroke="#2563EB" stroke-width="1.5"/>
+  </g>
+
+  <!-- Right Subnet Client Host -->
+  <g transform="translate(530, 170)" filter="url(#shadow)">
+    <rect x="-22" y="-18" width="44" height="36" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+    <rect x="-14" y="-12" width="28" height="18" rx="3" fill="#F8FAFC" stroke="#64748B" stroke-width="1"/>
+    <line x1="-6" y1="10" x2="6" y2="10" stroke="#64748B" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Packet data pulse dots -->
+  <circle cx="205" cy="95" r="3.5" fill="#2563EB" />
+  <circle cx="335" cy="95" r="3.5" fill="#2563EB" />
+  <circle cx="465" cy="95" r="3.5" fill="#2563EB" />
+  <circle cx="595" cy="95" r="3.5" fill="#2563EB" />
+  <circle cx="400" cy="170" r="3" fill="#10B981" />
+</svg>

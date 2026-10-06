@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-slate-50" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NETLAB — Parcours réseaux</title>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style data-purpose="base-typography">
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  </style>
+</head>
+<body class="h-full flex flex-col overflow-hidden text-slate-800">
+<!-- BEGIN: TopNavigationBar -->
+<header class="h-16 bg-white border-b border-slate-200 px-6 flex items-center justify-between shrink-0 select-none z-20">
+<!-- Brand and Navigation Links -->
+<div class="flex items-center space-x-6">
+<!-- Logo & Title -->
+<div class="flex items-center space-x-3">
+<div class="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-sm shadow-blue-200">
+<!-- Network Node Icon -->
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M19 14a3 3 0 0 0-2.82 2H13v-4h1.18A3 3 0 0 0 17 10a3 3 0 0 0-3-3 3 3 0 0 0-2.82 2H11V5.82A3 3 0 0 0 13 3a3 3 0 0 0-6 0 3 3 0 0 0 2 2.82V9H7.82A3 3 0 0 0 5 7a3 3 0 0 0-3 3 3 3 0 0 0 2.82 2H6v4H4.82A3 3 0 0 0 2 18a3 3 0 0 0 6 0 3 3 0 0 0-2-2.82V13h7v3.18A3 3 0 0 0 11 18a3 3 0 0 0 6 0 3 3 0 0 0 2-2.82V14z"></path>
+</svg>
+</div>
+<div class="leading-tight">
+<span class="block text-sm font-bold tracking-wider text-slate-900 uppercase">NETLAB</span>
+<span class="block text-[11px] text-slate-400 font-medium">Parcours réseaux</span>
+</div>
+</div>
+<!-- Divider -->
+<div class="h-6 w-px bg-slate-200"></div>
+<!-- Breadcrumbs & Nav Links -->
+<nav class="flex items-center space-x-5 text-sm font-medium">
+<button class="flex items-center space-x-1.5 text-slate-600 hover:text-slate-900 transition-colors" type="button">
+<span>Bibliothèque</span>
+<svg class="w-3.5 h-3.5 text-slate-400 stroke-[2.5]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="m19.5 8.25-7.5 7.5-7.5-7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<span class="text-slate-800 font-semibold cursor-default">Fondamentaux</span>
+</nav>
+</div>
+<!-- User Profile & Streak Indicator -->
+<div class="flex items-center space-x-5">
+<!-- Streak Tag -->
+<div class="flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-semibold text-amber-700 bg-amber-50 border border-amber-200/60">
+<svg class="w-4 h-4 fill-amber-500 text-amber-500" viewbox="0 0 24 24">
+<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+</svg>
+<span>3 jours</span>
+</div>
+<!-- User Avatar -->
+<div class="w-9 h-9 rounded-full bg-blue-100 border border-blue-200 flex items-center justify-center text-xs font-bold text-blue-700 hover:ring-2 hover:ring-blue-400 cursor-pointer transition">
+        AM
+      </div>
+</div>
+</header>
+<!-- END: TopNavigationBar -->
+<!-- BEGIN: MainLayout -->
+<div class="flex-1 flex overflow-hidden">
+<!-- BEGIN: LeftSidebar -->
+<aside class="w-72 bg-white border-r border-slate-200 flex flex-col justify-between overflow-y-auto px-5 py-5 select-none shrink-0" data-purpose="sidebar">
+<!-- Top Section of Sidebar -->
+<div class="space-y-6">
+<!-- Track Hierarchy -->
+<div>
+<span class="text-[11px] font-bold tracking-wider text-slate-400 uppercase">Votre parcours</span>
+<h2 class="text-sm font-semibold text-slate-900 mt-0.5">Réseaux • INPTIC</h2>
+</div>
+<!-- Global Progress Card -->
+<div class="p-3.5 bg-slate-50 border border-slate-100 rounded-xl space-y-2">
+<div class="flex items-center justify-between text-xs font-medium">
+<span class="text-slate-600">Progression globale</span>
+<span class="text-blue-600 font-bold text-xs">32%</span>
+</div>
+<!-- Progress Bar Container -->
+<div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+<div class="bg-blue-600 h-full rounded-full transition-all duration-300" style="width: 32%;"></div>
+</div>
+<p class="text-[11px] text-slate-400 font-medium">12 leçons sur 38 complétées</p>
+</div>
+<!-- Subjects List with Search -->
+<div class="space-y-2.5">
+<span class="text-xs font-bold text-slate-900">Sujet</span>
+<!-- Search Input Box -->
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-2.5 flex items-center pointer-events-none text-slate-400">
+<svg class="w-4 h-4 stroke-[2]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<input class="w-full pl-8 pr-3 py-1.5 text-xs bg-white border border-slate-200 rounded-lg placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="Rechercher un sujet" type="text"/>
+</div>
+<!-- Protocol Item Links -->
+<ul class="space-y-0.5 pt-1 text-xs font-medium">
+<!-- DHCP (Selected) -->
+<li>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg bg-blue-50 text-blue-600 font-semibold group" href="#">
+<div class="flex items-center space-x-2.5">
+<svg class="w-4 h-4 fill-current shrink-0" viewbox="0 0 24 24">
+<path d="M19 14a3 3 0 0 0-2.82 2H13v-4h1.18A3 3 0 0 0 17 10a3 3 0 0 0-3-3 3 3 0 0 0-2.82 2H11V5.82A3 3 0 0 0 13 3a3 3 0 0 0-6 0 3 3 0 0 0 2 2.82V9H7.82A3 3 0 0 0 5 7a3 3 0 0 0-3 3 3 3 0 0 0 2.82 2H6v4H4.82A3 3 0 0 0 2 18a3 3 0 0 0 6 0 3 3 0 0 0-2-2.82V13h7v3.18A3 3 0 0 0 11 18a3 3 0 0 0 6 0 3 3 0 0 0 2-2.82V14z"></path>
+</svg>
+<span>DHCP</span>
+</div>
+<span class="text-[11px] font-semibold text-blue-400">4</span>
+</a>
+</li>
+<!-- VLAN -->
+<li>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 transition-colors" href="#">
+<div class="flex items-center space-x-2.5">
+<svg class="w-4 h-4 text-slate-400 stroke-[1.8]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M6.429 9.75 2.25 12l4.179 2.25m0-4.5 5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0 4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0-5.571 3-5.571-3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>VLAN</span>
+</div>
+<span class="text-[11px] text-slate-400">6</span>
+</a>
+</li>
+<!-- OSPF -->
+<li>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 transition-colors" href="#">
+<div class="flex items-center space-x-2.5">
+<svg class="w-4 h-4 text-slate-400 stroke-[1.8]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>OSPF</span>
+</div>
+<span class="text-[11px] text-slate-400">5</span>
+</a>
+</li>
+<!-- NAT -->
+<li>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 transition-colors" href="#">
+<div class="flex items-center space-x-2.5">
+<svg class="w-4 h-4 text-slate-400 stroke-[1.8]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>NAT</span>
+</div>
+<span class="text-[11px] text-slate-400">3</span>
+</a>
+</li>
+<!-- ACL -->
+<li>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 transition-colors" href="#">
+<div class="flex items-center space-x-2.5">
+<svg class="w-4 h-4 text-slate-400 stroke-[1.8]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>ACL</span>
+</div>
+<span class="text-[11px] text-slate-400">4</span>
+</a>
+</li>
+<!-- STP -->
+<li>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 transition-colors" href="#">
+<div class="flex items-center space-x-2.5">
+<svg class="w-4 h-4 text-slate-400 stroke-[1.8]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>STP</span>
+</div>
+<span class="text-[11px] text-slate-400">5</span>
+</a>
+</li>
+</ul>
+</div>
+<!-- Learning Mode Segmented Buttons -->
+<div class="space-y-2">
+<span class="text-xs font-bold text-slate-900">Mode d'apprentissage</span>
+<div class="grid grid-cols-4 gap-1 p-0.5 bg-slate-100 rounded-lg text-[11px] font-medium text-slate-600 text-center">
+<button class="py-1 rounded hover:text-slate-900 transition-colors">Expliquer</button>
+<button class="py-1 rounded hover:text-slate-900 transition-colors">Quiz</button>
+<button class="py-1 rounded hover:text-slate-900 transition-colors">Exercice</button>
+<button class="py-1 rounded bg-white font-semibold text-slate-900 shadow-sm">Corriger</button>
+</div>
+</div>
+<!-- Difficulty Level Radio Buttons -->
+<div class="space-y-2">
+<span class="text-xs font-bold text-slate-900">Niveau</span>
+<div class="flex items-center space-x-3 text-xs text-slate-600">
+<label class="flex items-center space-x-1.5 cursor-pointer font-medium text-slate-900">
+<span class="w-3.5 h-3.5 rounded-full border-4 border-blue-600 bg-white inline-block"></span>
+<span>Débutant</span>
+</label>
+<label class="flex items-center space-x-1.5 cursor-pointer text-slate-400 hover:text-slate-600 transition">
+<span class="w-3.5 h-3.5 rounded-full border border-slate-300 bg-white inline-block"></span>
+<span>Intermédiaire</span>
+</label>
+<label class="flex items-center space-x-1.5 cursor-pointer text-slate-400 hover:text-slate-600 transition">
+<span class="w-3.5 h-3.5 rounded-full border border-slate-300 bg-white inline-block"></span>
+<span>Avancé</span>
+</label>
+</div>
+</div>
+</div>
+<!-- Bottom Actions -->
+<div class="space-y-2 pt-4">
+<!-- Start Lesson Primary Button -->
+<button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-4 rounded-xl flex items-center justify-center space-x-2 text-xs shadow-sm shadow-blue-300 transition-colors">
+<svg class="w-4 h-4 stroke-[2]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Commencer la leçon</span>
+<svg class="w-3.5 h-3.5 stroke-[2.5]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- New Lesson Secondary Button -->
+<button class="w-full bg-white hover:bg-slate-50 text-slate-700 font-medium py-2 px-4 rounded-xl flex items-center justify-center space-x-1.5 text-xs border border-slate-200 transition-colors">
+<svg class="w-3.5 h-3.5 stroke-[2.5]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 4.5v15m7.5-7.5h-15" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Nouvelle leçon</span>
+</button>
+</div>
+</aside>
+<!-- END: LeftSidebar -->
+<!-- BEGIN: MainContent -->
+<main class="flex-1 bg-slate-50/60 overflow-y-auto px-12 py-10 flex flex-col items-center" data-purpose="chat-lesson-container">
+<div class="w-full max-w-4xl space-y-6">
+<!-- Header & Title -->
+<div class="space-y-1">
+<!-- Small muted category label -->
+<span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Avant de commencer</span>
+<div class="flex items-center justify-between">
+<h1 class="text-4xl font-extrabold tracking-tight text-slate-900">Une question en tête ?</h1>
+<!-- DHCP Badge Tag -->
+<div class="flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-blue-50 text-blue-600 font-bold text-xs border border-blue-100 shadow-sm">
+<svg class="w-3.5 h-3.5 fill-current" viewbox="0 0 24 24">
+<path d="M19 14a3 3 0 0 0-2.82 2H13v-4h1.18A3 3 0 0 0 17 10a3 3 0 0 0-3-3 3 3 0 0 0-2.82 2H11V5.82A3 3 0 0 0 13 3a3 3 0 0 0-6 0 3 3 0 0 0 2 2.82V9H7.82A3 3 0 0 0 5 7a3 3 0 0 0-3 3 3 3 0 0 0 2.82 2H6v4H4.82A3 3 0 0 0 2 18a3 3 0 0 0 6 0 3 3 0 0 0-2-2.82V13h7v3.18A3 3 0 0 0 11 18a3 3 0 0 0 6 0 3 3 0 0 0 2-2.82V14z"></path>
+</svg>
+<span>DHCP</span>
+</div>
+</div>
+<p class="text-sm text-slate-500 pt-0.5">
+            Échangez avec NETLAB sur <strong class="text-slate-800 font-semibold">DHCP</strong>, puis lancez votre leçon quand vous êtes prêt.
+          </p>
+</div>
+<!-- Chat / Interactive Frame -->
+<div class="bg-white border border-slate-200/80 rounded-2xl shadow-sm overflow-hidden flex flex-col min-h-[460px] justify-between p-7">
+<!-- Assistant Header Area -->
+<div>
+<div class="flex items-start justify-between">
+<div class="flex items-center space-x-3.5">
+<div class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center font-bold">
+<svg class="w-5 h-5 stroke-[2]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<span class="text-[11px] font-bold tracking-wider text-slate-400 uppercase">Assistant NETLAB</span>
+<h3 class="text-base font-bold text-slate-900 leading-snug">Votre espace de conversation</h3>
+<p class="text-xs text-slate-400 mt-0.5">Posez votre question comme vous le feriez avec un professeur.</p>
+</div>
+</div>
+<!-- Status Online Indicator -->
+<div class="flex items-center space-x-1.5 text-xs text-slate-500 font-medium">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span>En ligne</span>
+</div>
+</div>
+<!-- Subtle Horizontal Divider -->
+<div class="w-full border-t border-slate-100 mt-5"></div>
+</div>
+<!-- Empty State / Discussion Prompt Placeholder -->
+<div class="my-auto py-12 text-center select-none">
+<p class="text-xs font-medium text-slate-500">Commencez par demander quelque chose sur DHCP.</p>
+<p class="text-[11px] text-slate-400 mt-1 italic font-normal">Ex. « Pourquoi a-t-on besoin d'une adresse IP ? »</p>
+</div>
+<!-- Bottom Prompt Input and Link Action -->
+<div class="space-y-3 pt-2">
+<!-- Input Box -->
+<div class="relative flex items-center">
+<input class="w-full py-3 pl-4 pr-12 text-xs bg-white border border-slate-200 rounded-xl placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="Écrivez votre question sur DHCP..." type="text"/>
+<button class="absolute right-2 w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition shadow-sm" title="Envoyer le message" type="button">
+<svg class="w-4 h-4 stroke-[2] -rotate-45 ml-0.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+<!-- Quick Jump / Lesson Link -->
+<div class="flex justify-end">
+<a class="inline-flex items-center space-x-1.5 text-xs font-semibold text-blue-600 hover:text-blue-700 transition" href="#">
+<span>Commencer la leçon sur DHCP</span>
+<svg class="w-3.5 h-3.5 stroke-[2]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- END: MainContent -->
+</div>
+<!-- END: MainLayout -->
+</body></html>

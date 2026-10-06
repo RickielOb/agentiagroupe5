@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-slate-50 antialiased" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>NETLAB — Parcours réseaux</title>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN with forms and container queries plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script data-purpose="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+            }
+          },
+          boxShadow: {
+            'card': '0 2px 8px -2px rgba(0, 0, 0, 0.05), 0 1px 4px -1px rgba(0, 0, 0, 0.03)',
+            'hero': '0 12px 32px -4px rgba(37, 99, 235, 0.12), 0 4px 16px -2px rgba(0, 0, 0, 0.04)',
+            'float': '0 8px 20px -4px rgba(37, 99, 235, 0.35)',
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom Scrollbar & Layout Styles -->
+<style data-purpose="custom-scrollbars">
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    body {
+      -webkit-tap-highlight-color: transparent;
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen text-slate-800 bg-[#f8fafc] font-sans selection:bg-blue-100 selection:text-blue-700 pb-20">
+<!-- BEGIN: MainHeader -->
+<header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 px-4 py-2.5 transition-all shadow-sm" data-purpose="mobile-top-nav">
+<!-- Top row: Logo, Streak, Profile -->
+<div class="flex items-center justify-between gap-2">
+<!-- Brand Logo & Context -->
+<div class="flex items-center gap-2.5">
+<!-- Netlab 3-nodes icon -->
+<div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-sm shadow-blue-500/30 flex-shrink-0">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24">
+<rect height="5" rx="1" width="6" x="9" y="3"></rect>
+<rect height="5" rx="1" width="6" x="3" y="16"></rect>
+<rect height="5" rx="1" width="6" x="15" y="16"></rect>
+<path d="M12 8v4"></path>
+<path d="M6 16v-2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"></path>
+</svg>
+</div>
+<div>
+<div class="flex items-center gap-1.5 leading-none">
+<span class="font-extrabold text-[15px] tracking-tight text-slate-900">NETLAB</span>
+</div>
+<span class="text-[11px] font-medium text-slate-400 leading-tight block">Parcours réseaux</span>
+</div>
+</div>
+<!-- Right Header Actions (Streak & User Avatar) -->
+<div class="flex items-center gap-2">
+<!-- Streak pill -->
+<div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-50 border border-amber-200/60 text-amber-700 text-xs font-semibold">
+<span class="text-amber-500 text-sm">⚡</span>
+<span>3 jours</span>
+</div>
+<!-- User avatar button -->
+<button aria-label="Profil utilisateur" class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 border border-blue-200 text-xs font-bold flex items-center justify-center tracking-tight shadow-sm active:scale-95 transition-transform" type="button">
+          AM
+        </button>
+</div>
+</div>
+<!-- Compact Context & Quick Status Bar -->
+<div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+<div class="flex items-center gap-1.5 overflow-hidden">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-100 font-semibold text-slate-600 text-[11px]">
+          Réseaux • INPTIC
+        </span>
+<span class="text-slate-300">/</span>
+<button class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-blue-50 border border-blue-200/80 font-bold text-blue-700 text-[11px]" type="button">
+<svg class="w-3 h-3 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<rect height="4" rx="1" width="6" x="9" y="3"></rect>
+<rect height="4" rx="1" width="6" x="3" y="17"></rect>
+<rect height="4" rx="1" width="6" x="15" y="17"></rect>
+<path d="M12 7v5M6 17v-2a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v2"></path>
+</svg>
+<span>DHCP</span>
+<span class="text-blue-500 font-medium">32%</span>
+</button>
+</div>
+<!-- Quick Mode Badge -->
+<div class="flex items-center gap-1 text-[11px] font-medium text-slate-500">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+<span>Mode Corriger</span>
+</div>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: MainContent -->
+<main class="flex-1 px-4 pt-3 max-w-lg mx-auto w-full flex flex-col space-y-3.5" data-purpose="learning-interface">
+<!-- Compact Study Switcher & Quick Controls Drawer -->
+<section class="bg-white rounded-xl border border-slate-200/70 p-2.5 flex items-center justify-between shadow-card" data-purpose="compact-controls">
+<div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar text-xs font-semibold">
+<button class="px-2.5 py-1 rounded-lg bg-blue-600 text-white shadow-sm flex items-center gap-1 flex-shrink-0" type="button">
+<span>DHCP</span>
+<span class="bg-blue-700/60 px-1 py-0.2 rounded text-[10px]">4</span>
+</button>
+<button class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200/70 flex items-center gap-1 flex-shrink-0" type="button">
+<span>VLAN</span>
+</button>
+<button class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200/70 flex items-center gap-1 flex-shrink-0" type="button">
+<span>OSPF</span>
+</button>
+<button class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200/70 flex items-center gap-1 flex-shrink-0" type="button">
+<span>NAT</span>
+</button>
+</div>
+<!-- Compact Level Indicator -->
+<div class="flex items-center gap-1 pl-2 border-l border-slate-200 flex-shrink-0">
+<span class="text-[10px] font-bold uppercase text-slate-400">Niveau:</span>
+<span class="text-xs font-bold text-slate-800">Débutant</span>
+</div>
+</section>
+<!-- HERO CONVERSATION SECTION (Central Star) -->
+<section class="flex-1 flex flex-col space-y-3" data-purpose="chat-hero-section">
+<!-- Prominent Headline in Large Characters -->
+<div class="pt-1">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50/80 px-2.5 py-0.5 rounded-full border border-blue-200/50">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span>
+            Tuteur Interactif
+          </span>
+<span class="text-xs text-slate-400 font-medium">Session #12</span>
+</div>
+<h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1.5 leading-tight">
+          Votre espace de conversation
+        </h1>
+<p class="text-sm font-medium text-slate-500 mt-1 leading-snug">
+          Une question en tête sur le protocole <strong class="text-slate-800">DHCP</strong> ? Échangez librement en direct.
+        </p>
+</div>
+<!-- Main Conversation Box Card -->
+<div class="flex-1 bg-white rounded-2xl border border-slate-200/90 shadow-hero flex flex-col overflow-hidden" data-purpose="assistant-hero-box">
+<!-- Assistant Identity Bar -->
+<div class="px-4 py-3 bg-gradient-to-r from-blue-50/70 via-slate-50/50 to-white border-b border-slate-100 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white flex items-center justify-center shadow-md shadow-blue-500/25">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10"></circle>
+<path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+<line x1="12" x2="12.01" y1="17" y2="17"></line>
+</svg>
+</div>
+<span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-500 border-2 border-white rounded-full"></span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="text-sm font-bold text-slate-900">Assistant NETLAB</h3>
+</div>
+<p class="text-xs text-emerald-600 font-semibold flex items-center gap-1">
+<span>En ligne</span>
+<span class="text-slate-300">•</span>
+<span class="text-slate-400 font-normal">Spécialiste Réseaux</span>
+</p>
+</div>
+</div>
+<!-- Switch Lesson Trigger (Subtle) -->
+<a class="text-xs font-bold text-blue-600 bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-xl transition-all border border-blue-200/70 flex items-center gap-1" href="#start-lesson">
+<span>Leçon</span>
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></svg>
+</a>
+</div>
+<!-- Conversation Message Stream Area -->
+<div class="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-4 bg-gradient-to-b from-white via-slate-50/40 to-slate-50/70">
+<!-- Assistant Welcome Speech Bubble -->
+<div class="flex gap-3 max-w-[95%] sm:max-w-[85%]">
+<div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center flex-shrink-0 text-xs font-bold">
+              AI
+            </div>
+<div class="space-y-1.5">
+<div class="bg-white border border-slate-200/80 rounded-2xl rounded-tl-sm p-4 shadow-sm text-slate-800 text-[13px] leading-relaxed">
+<p class="font-bold text-sm text-slate-900 mb-1">
+                  Bonjour Alexandre ! 👋
+                </p>
+<p>
+                  Je suis votre assistant dédié pour le module <strong class="text-blue-700">DHCP</strong> (Dynamic Host Configuration Protocol).
+                </p>
+<p class="mt-2 text-slate-600">
+                  Posez votre question en grand format comme vous le feriez avec un professeur en classe. De quoi avez-vous besoin pour démarrer ?
+                </p>
+</div>
+<span class="text-[10px] font-medium text-slate-400 ml-1">À l'instant</span>
+</div>
+</div>
+<!-- Suggested Quick Questions Pills -->
+<div class="space-y-2 pt-2">
+<p class="text-[11px] font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+<svg class="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewbox="0 0 20 20">
+<path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14c.015-.34.208-.646.477-.859a4 4 0 10-4.954 0c.27.213.462.519.477.859h4z"></path>
+</svg>
+<span>Suggestions de questions rapides</span>
+</p>
+<div class="flex flex-wrap gap-1.5">
+<button class="text-left text-xs bg-white hover:bg-blue-50/80 border border-slate-200/90 hover:border-blue-300 text-slate-700 px-3 py-2 rounded-xl transition-all font-medium shadow-sm active:scale-98" type="button">
+                  « Pourquoi a-t-on besoin d'une adresse IP ? »
+                </button>
+<button class="text-left text-xs bg-white hover:bg-blue-50/80 border border-slate-200/90 hover:border-blue-300 text-slate-700 px-3 py-2 rounded-xl transition-all font-medium shadow-sm active:scale-98" type="button">
+                  « Explique-moi le processus DORA »
+                </button>
+<button class="text-left text-xs bg-white hover:bg-blue-50/80 border border-slate-200/90 hover:border-blue-300 text-slate-700 px-3 py-2 rounded-xl transition-all font-medium shadow-sm active:scale-98" type="button">
+                  « Différence avec une IP statique ? »
+                </button>
+</div>
+</div>
+</div>
+<!-- Prominent Hero Chat Input Bar -->
+<div class="p-3 bg-white border-t border-slate-200/80">
+<form class="space-y-2" onsubmit="event.preventDefault()">
+<div class="relative flex items-center bg-slate-50 focus-within:bg-white rounded-2xl border-2 border-slate-200 focus-within:border-blue-500 focus-within:ring-4 focus-within:ring-blue-100 transition-all p-1">
+<!-- Audio/Voice Button -->
+<button aria-label="Commande vocale" class="p-2.5 text-slate-400 hover:text-blue-600 transition-colors rounded-xl" type="button">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+<path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+<line x1="12" x2="12" y1="19" y2="23"></line>
+<line x1="8" x2="16" y1="23" y2="23"></line>
+</svg>
+</button>
+<!-- Text Input in Large Characters -->
+<input class="w-full bg-transparent text-sm sm:text-base text-slate-800 placeholder-slate-400 focus:outline-none px-2 py-1 font-medium" placeholder="Posez votre question sur DHCP..." type="text"/>
+<!-- Send Button -->
+<button aria-label="Envoyer la question" class="w-10 h-10 rounded-xl bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white flex items-center justify-center flex-shrink-0 shadow-md shadow-blue-500/30 active:scale-90 transition-transform" type="submit">
+<svg class="w-4 h-4 translate-x-0.5 -translate-y-0.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" viewbox="0 0 24 24">
+<line x1="22" x2="11" y1="2" y2="13"></line>
+<polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+</svg>
+</button>
+</div>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: Subtle Compact Bottom Action Bar (Non-intrusive) -->
+<footer class="fixed bottom-0 inset-x-0 z-30 bg-white/90 backdrop-blur-md border-t border-slate-200/80 px-4 py-2" data-purpose="mobile-action-bar">
+<div class="max-w-lg mx-auto flex items-center justify-between gap-3">
+<div class="flex items-center gap-2">
+<span class="text-xs font-semibold text-slate-600">Prêt pour le cours ?</span>
+</div>
+<div class="flex items-center gap-2">
+<a class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-sm flex items-center gap-1.5 active:scale-95 transition-all" href="#start-lesson" id="start-lesson">
+<svg class="w-3.5 h-3.5 text-blue-200" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24">
+<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+<path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+</svg>
+<span>Commencer la leçon</span>
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></svg>
+</a>
+</div>
+</div>
+</footer>
+<!-- END: Subtle Compact Bottom Action Bar -->
+<!-- iOS Dynamic Viewport Height Helper -->
+<script data-purpose="viewport-height-enhancement">
+    const setAppHeight = () => {
+      document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
+    };
+    window.addEventListener('resize', setAppHeight);
+    setAppHeight();
+  </script>
+</body></html>
