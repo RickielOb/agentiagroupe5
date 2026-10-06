@@ -111,25 +111,6 @@ def inject_theme(is_dark: bool) -> None:
 inject_theme(st.session_state.dark_mode)
 
 
-# -----------------------------------------------------------------------------
-# LOGIQUE D'APPEL IA & GESTION DES ERREURS
-# -----------------------------------------------------------------------------
-def send(user_text: str) -> None:
-    """Ajoute le message utilisateur, appelle l'agent Gemini, gère les erreurs."""
-    st.session_state.messages.append({"role": "user", "content": user_text})
-    try:
-        with st.spinner("Analyse en cours par le tuteur NETLAB..."):
-            answer = ask_agent(SYSTEM_PROMPT, st.session_state.messages)
-        st.session_state.messages.append({"role": "assistant", "content": answer})
-    except MissingApiKeyError:
-        st.session_state.messages.pop()
-        st.error("Clé API absente : veuillez ajouter GEMINI_API_KEY dans votre fichier .env.")
-    except EmptyResponseError:
-        st.session_state.messages.pop()
-        st.warning("Le service IA a renvoyé une réponse vide. Veuillez réessayer.")
-    except Exception as e:
-        st.session_state.messages.pop()
-        st.error(f"Impossible de contacter le service IA ({e}).")
 
 
 # -----------------------------------------------------------------------------
@@ -224,10 +205,17 @@ if reset_clicked:
     st.session_state.messages = []
     st.rerun()
 
+pending_prompt = None
 if start_clicked:
-    st.session_state.topics_visited.add(topic)
-    send(build_user_prompt(topic, mode, level))
-    st.rerun()
+    pending_prompt = build_user_prompt(topic, mode, level)
+
+
+# -----------------------------------------------------------------------------
+# CHAMP DE SAISIE PRINCIPAL (POSITION FIXE EN BAS DE PAGE)
+# -----------------------------------------------------------------------------
+chat_query = st.chat_input(f"Posez une question sur {topic} ou répondez au quiz...")
+if chat_query and chat_query.strip():
+    pending_prompt = chat_query.strip()
 
 
 # -----------------------------------------------------------------------------
@@ -266,7 +254,7 @@ st.markdown(
 # -----------------------------------------------------------------------------
 # FLUX DE CONVERSATION & SUGGESTIONS RAPIDES
 # -----------------------------------------------------------------------------
-if not st.session_state.messages:
+if not st.session_state.messages and not pending_prompt:
     st.markdown(
         f"""
         <div style="margin-top: 1.5rem; margin-bottom: 1.25rem;">
@@ -289,30 +277,42 @@ if not st.session_state.messages:
         with col:
             st.markdown(f'<div class="bubble-cloud-item bubble-cloud-item-{idx+1}">', unsafe_allow_html=True)
             if st.button(sug, key=f"sug_{idx}", use_container_width=True):
-                st.session_state.topics_visited.add(topic)
-                send(sug)
-                st.rerun()
+                pending_prompt = sug
             st.markdown('</div>', unsafe_allow_html=True)
 
-else:
-    # Flux des messages de discussion
-    for m in st.session_state.messages:
-        is_user = m["role"] == "user"
-        with st.chat_message(
-            "user" if is_user else "assistant",
-            avatar=None if is_user else (AVATAR_PATH if os.path.exists(AVATAR_PATH) else None),
-        ):
-            st.markdown(m["content"])
+# Affichage de l'historique des messages
+for m in st.session_state.messages:
+    is_user = m["role"] == "user"
+    with st.chat_message(
+        "user" if is_user else "assistant",
+        avatar=None if is_user else (AVATAR_PATH if os.path.exists(AVATAR_PATH) else None),
+    ):
+        st.markdown(m["content"])
 
+# Traitement immédiat de la nouvelle question (affichage question -> spinner tuteur -> réponse)
+if pending_prompt:
+    st.session_state.topics_visited.add(topic)
+    st.session_state.messages.append({"role": "user", "content": pending_prompt})
 
-# -----------------------------------------------------------------------------
-# CHAMP DE SAISIE PRINCIPAL (EN BAS DE PAGE)
-# -----------------------------------------------------------------------------
-question = st.chat_input(f"Posez une question sur {topic} ou répondez au quiz...")
-if question is not None:
-    if question.strip():
-        st.session_state.topics_visited.add(topic)
-        send(question.strip())
-        st.rerun()
-    else:
-        st.warning("Veuillez saisir un message avant d'envoyer.")
+    # 1. Bulle utilisateur affichée immédiatement
+    with st.chat_message("user"):
+        st.markdown(pending_prompt)
+
+    # 2. Bulle tuteur avec indicateur de chargement / spinner
+    with st.chat_message("assistant", avatar=AVATAR_PATH if os.path.exists(AVATAR_PATH) else None):
+        with st.spinner("Analyse en cours par le tuteur NETLAB..."):
+            try:
+                answer = ask_agent(SYSTEM_PROMPT, st.session_state.messages)
+                st.markdown(answer)
+                st.session_state.messages.append({"role": "assistant", "content": answer})
+            except MissingApiKeyError:
+                st.session_state.messages.pop()
+                st.error("Clé API absente : veuillez ajouter GEMINI_API_KEY dans votre fichier .env.")
+            except EmptyResponseError:
+                st.session_state.messages.pop()
+                st.warning("Le service IA a renvoyé une réponse vide. Veuillez réessayer.")
+            except Exception as e:
+                st.session_state.messages.pop()
+                st.error(f"Impossible de contacter le service IA ({e}).")
+    st.rerun()
+
